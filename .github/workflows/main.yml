@@ -42,3 +42,16 @@ jobs:
           file: ./StoreApp/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/storeapp:latest
+      = 
+        name: Deploy with SSH
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: >-  
+            -rltgoDzvO
+            --exclude='.git'
+            --exclude='node_modules/'
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          TARGET: ./app/StoreApp/
+        
