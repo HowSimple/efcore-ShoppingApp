@@ -1,12 +1,12 @@
-﻿using System;
+﻿using StoreApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using WebApplication1.Models;
-namespace WebApplication1.DAL
+namespace StoreApp.DAL
 {
-    public static class  StoreInitializer
+    public static class StoreInitializer
     {
         public static void Initialize(StoreContext context)
         {

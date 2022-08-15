@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.DAL;
+using StoreApp.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();

@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.DAL;
-using WebApplication1.Models;
+using StoreApp.DAL;
+using StoreApp.Models;
 
-namespace WebApplication1.Controllers
+namespace StoreApp.Controllers
 {
     public class CustomersController : Controller
     {

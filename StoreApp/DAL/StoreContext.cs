@@ -1,18 +1,19 @@
-﻿using WebApplication1.Models;
-
+﻿
 using Microsoft.EntityFrameworkCore;
+using StoreApp.Models;
 
-namespace WebApplication1.DAL
+namespace StoreApp.DAL
 {
     public class StoreContext : DbContext
     {
         public StoreContext(DbContextOptions<StoreContext> options) : base(options)
         {
-           // Database.EnsureCreated();
+            // Database.EnsureCreated();
         }
-//        public DbSet<Store> Stores { get; set; }
+        //        public DbSet<Store> Stores { get; set; }
         public DbSet<Product> Products { get; set; }
-        
+        public DbSet<Customer> Customers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>().ToTable("Product");
