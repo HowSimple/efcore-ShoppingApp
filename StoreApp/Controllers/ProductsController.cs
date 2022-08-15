@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using WebApplication1.DAL;
-using WebApplication1.Models;
+using StoreApp.DAL;
+using StoreApp.Models;
 
-namespace WebApplication1.Controllers
+namespace StoreApp.Controllers
 {
     public class ProductsController : Controller
     {
@@ -22,9 +22,9 @@ namespace WebApplication1.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-              return _context.Products != null ? 
-                          View(await _context.Products.ToListAsync()) :
-                          Problem("Entity set 'StoreContext.Products'  is null.");
+            return _context.Products != null ?
+                        View(await _context.Products.ToListAsync()) :
+                        Problem("Entity set 'StoreContext.Products'  is null.");
         }
 
         // GET: Products/Details/5
@@ -56,7 +56,7 @@ namespace WebApplication1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Price,QuantityAvailable,DateAdded")] Product product)
+        public async Task<IActionResult> Create([Bind("ID,Name,Price,Category,QuantityAvailable,DateAdded")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace WebApplication1.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Price,QuantityAvailable,DateAdded")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Price,Category,QuantityAvailable,DateAdded")] Product product)
         {
             if (id != product.ID)
             {
@@ -150,14 +150,14 @@ namespace WebApplication1.Controllers
             {
                 _context.Products.Remove(product);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ProductExists(int id)
         {
-          return (_context.Products?.Any(e => e.ID == id)).GetValueOrDefault();
+            return (_context.Products?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }
