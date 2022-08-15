@@ -42,7 +42,7 @@ jobs:
           file: ./StoreApp/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/storeapp:latest
-      = 
+      =
         name: Deploy with SSH
         uses: easingthemes/ssh-deploy@main
         env:
